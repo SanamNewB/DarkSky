@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                     else {
-                        alertUserOnError();
+                        alertUserOnError(); // show an error dialog
 
                     }
                 } catch (IOException e) {
