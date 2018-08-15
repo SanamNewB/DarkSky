@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         String apiKey = "8a713dd71a4848c8f429c84202dde31b"; // unique access to the website's api service when user signs up.
 // hardcoded co-ordinates of Los Angeles, CA
         double latitude = 37.8267;
+        //double latitude = 99999; // used this for testing the Alert Dialog Pop-up
         double longitude = -122.4233;
 // https://api.darksky.net/forecast/8a713dd71a4848c8f429c84202dde31b/37.8267,-122.4233
         String forecastURL = "https://api.darksky.net/forecast/"
@@ -65,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                     else {
                         alertUserOnError(); // show an error dialog
-
                     }
                 } catch (IOException e) {
                     Log.e(TAG,"IO Exception is caught", e);
@@ -75,6 +75,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void alertUserOnError() {
+        AlertDialogFragment alertDialogFragment = new AlertDialogFragment();
+        alertDialogFragment.show(getSupportFragmentManager(),"error dialog");
 
     }
 }

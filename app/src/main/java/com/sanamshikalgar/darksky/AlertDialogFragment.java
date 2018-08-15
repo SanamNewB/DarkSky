@@ -17,9 +17,9 @@ public class AlertDialogFragment extends DialogFragment {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 
         //setting the title of the dialog
-        alertDialogBuilder.setTitle("oops sorry")
-                .setMessage("There was an error")
-                .setPositiveButton("OK",null); //the dialog box with 2 buttons which only need to tap on OK
+        alertDialogBuilder.setTitle(R.string.error_title)
+                .setMessage(R.string.error_message)
+                .setPositiveButton(R.string.error_btn_ok_text,null); //the dialog box with 2 buttons which only need to tap on OK
 
         //or  .setNegativeButton("OK",null);
         // or .setNeutralButton("OK",null);
