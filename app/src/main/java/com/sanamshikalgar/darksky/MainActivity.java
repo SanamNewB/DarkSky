@@ -155,10 +155,9 @@ public class MainActivity extends AppCompatActivity {
 
 // STEP 17: Setting CurrentWeather from JSON; populating our data model object with the real weather data from the weather server.
         JSONObject currently = weatherDetails.getJSONObject("currently"); // 'currently' corresponds to root object in the JSON Response
-
         CurrentWeather currentWeather = new CurrentWeather();
 
-        currentWeather.setHumidity(currently.getDouble("humidity"));
+        currentWeather.setHumidity(currently.getDouble("humidity")); // setting values from the data model
         currentWeather.setTime(currently.getLong("time"));
         currentWeather.setIcon(currently.getString("icon"));
         currentWeather.setTemperature(currently.getDouble("temperature"));
@@ -166,6 +165,7 @@ public class MainActivity extends AppCompatActivity {
         currentWeather.setUvIndex(currently.getInt("uvIndex"));
         currentWeather.setWindSpeed(currently.getDouble("windSpeed"));
         currentWeather.setTimezone(timezone);
+       // currentWeather.setLocationLabel(currently.getString("Location"));
 
         Log.v(TAG,currentWeather.getFormattedTime());
 

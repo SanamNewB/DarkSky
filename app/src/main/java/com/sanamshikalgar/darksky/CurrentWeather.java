@@ -38,11 +38,11 @@ public class CurrentWeather {
     }
 
     public String getFormattedTime() { // STEP 18
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("h:mm a");
-        simpleDateFormat.setTimeZone(java.util.TimeZone.getTimeZone(timezone));
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("h:mm a"); // building a simpleDateFormat object . a= am/pm
+        simpleDateFormat.setTimeZone(java.util.TimeZone.getTimeZone(timezone)); // getting the time from the location specified . so to set time we consider timezone
 
-        Date date = new Date(time * 1000);
-        return simpleDateFormat.format(date);
+        Date date = new Date(time * 1000); // // the date object is takes in time in ms as its parameter; 1s = 1000ms
+        return simpleDateFormat.format(date); //format() takes in a date object.
     }
 
     public void setTime(long time) {
@@ -65,8 +65,9 @@ public class CurrentWeather {
         this.icon = icon;
     }
 
-    public void getIconID() {
-        //clear-day, clear-night, rain, snow, sleet, wind, fog,
+    public void getIconID() { // To display Icons which are in String format from JSON data to relevant images for user
+        //possible string values in the API are:
+        // clear-day, clear-night, rain, snow, sleet, wind, fog,
         // cloudy, partly-cloudy-day, or partly-cloudy-night
 
         int iconID = R.drawable.clear_day;
