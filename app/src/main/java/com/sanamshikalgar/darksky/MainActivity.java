@@ -7,7 +7,9 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -30,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        TextView darkSky = findViewById(R.id.creditTextView);
+        darkSky.setMovementMethod(LinkMovementMethod.getInstance());
 
 // STEP 1: declare URL of the API you will use to display weather of a particular location
         String apiKey = "8a713dd71a4848c8f429c84202dde31b"; // unique access to the website's api service when user signs up.
@@ -82,7 +86,6 @@ public class MainActivity extends AppCompatActivity {
                         } else {
 // STEP 7: When an input URL isn't of right format, let user know something is gone wrong.
                             alertUserOnError(); // Method to show an error dialog
-
                         }
                     } catch (IOException e) {
                         Log.e(TAG, "IO Exception is caught", e);

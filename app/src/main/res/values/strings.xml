@@ -7,4 +7,7 @@
     <string name="network_error_title">Network Error</string>
     <string name="network_error_message">Network not found</string>
     <string name="network_error_OK_button">OKAY</string>
+    <string name="api_message">
+        <a href="https://darksky.net/poweredby">Powered By Dark Sky</a>
+    </string>
 </resources>
