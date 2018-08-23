@@ -2,11 +2,13 @@
 * This throws a NETWORK ON MAIN THREAD EXCEPTION each and every time
 * indicating that networking is to be done on a separate thread. */
 
-package com.sanamshikalgar.darksky;
+package com.sanamshikalgar.darksky.View;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+
+import com.sanamshikalgar.darksky.R;
 
 import java.io.IOException;
 

@@ -1,7 +1,9 @@
 // Creating the data Model objects to hold the data we are getting from the Dark Sky Web service.
 // STEP 10: Add a java class to main project
 // This is a class file to define all setters and getter methods on each variable defined
-package com.sanamshikalgar.darksky;
+package com.sanamshikalgar.darksky.Model;
+
+import com.sanamshikalgar.darksky.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

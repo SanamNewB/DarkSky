@@ -1,6 +1,6 @@
 // STEP 9: Creating the AlertDialogFragment
 
-package com.sanamshikalgar.darksky;
+package com.sanamshikalgar.darksky.View;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
+
+import com.sanamshikalgar.darksky.R;
 
 public class AlertDialogFragment extends DialogFragment {
 
