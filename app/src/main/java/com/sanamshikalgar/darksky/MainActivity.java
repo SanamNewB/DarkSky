@@ -1,16 +1,20 @@
 /* this is MAIN ACTIVITY that shows working with Asynchronous Get () from the OkHttp Recipes */
+/* MainActivity is the Controller*/
 
 package com.sanamshikalgar.darksky;
 
 import android.content.Context;
+import android.databinding.DataBindingUtil;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.widget.TextView;
-import android.widget.Toast;
+
+
+import com.sanamshikalgar.darksky.databinding.ActivitymainBinding;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -31,7 +35,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        //setContentView(R.layout.activitymain);
+       final ActivitymainBinding activityMainBinding = DataBindingUtil.setContentView(MainActivity.this, R.layout.activitymain);
         TextView darkSky = findViewById(R.id.creditTextView);
         darkSky.setMovementMethod(LinkMovementMethod.getInstance());
 
@@ -82,6 +87,24 @@ public class MainActivity extends AppCompatActivity {
                             // STEP 13: If response.isSuccessful ==true; set currentWeather to getCurrentDetails(JSON Data)
                             // JSON Data == response.body().string()
                             currentWeather = getCurrentDetails(jSON_Data);
+                            //String locationLabel, long time, String summary, String icon,
+                            //                          double temperature, double humidity, long pressure,
+                            //                          double windSpeed, int uvIndex, String timezone
+
+                            CurrentWeather displayer = new CurrentWeather(
+                                    currentWeather.getLocationLabel(),
+                                    currentWeather.getTime(),
+                                    currentWeather.getSummary(),
+                                    currentWeather.getIcon(),
+                                    currentWeather.getTemperature(),
+                                    currentWeather.getHumidity(),
+                                    currentWeather.getOzone(),
+                                    currentWeather.getWindSpeed(),
+                                    currentWeather.getUvIndex(),
+                                    currentWeather.getTimezone(),
+                                    currentWeather.getPrecipProbability()
+                                    );
+                            activityMainBinding.setWeather(displayer);
 
                         } else {
 // STEP 7: When an input URL isn't of right format, let user know something is gone wrong.
@@ -162,13 +185,16 @@ public class MainActivity extends AppCompatActivity {
 
         currentWeather.setHumidity(currently.getDouble("humidity")); // setting values from the data model
         currentWeather.setTime(currently.getLong("time"));
+        //currentWeather.setLocationLabel(currently.getString("timezone"));
+        currentWeather.setSummary(currently.getString("summary"));
         currentWeather.setIcon(currently.getString("icon"));
         currentWeather.setTemperature(currently.getDouble("temperature"));
-        currentWeather.setPressure(currently.getLong("pressure"));
+        currentWeather.setOzone(currently.getLong("ozone")); //The columnar density of total atmospheric ozone at the given time in Dobson units.
         currentWeather.setUvIndex(currently.getInt("uvIndex"));
         currentWeather.setWindSpeed(currently.getDouble("windSpeed"));
+        currentWeather.setPrecipProbability(currently.getDouble("precipProbability"));
         currentWeather.setTimezone(timezone);
-       // currentWeather.setLocationLabel(currently.getString("Location"));
+
 
         Log.v(TAG,currentWeather.getFormattedTime());
 
@@ -177,4 +203,6 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
-
+// extra notes:
+// If you want to align a TextView to a specific spot in a layout but don't want to constrain it to another View or Widget,
+// ConstraintLayout provides a helper object that can be used in this case called as "Guideline"

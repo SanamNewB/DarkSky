@@ -1,9 +1,7 @@
-// Creating the Model objects to hold the data we are getting from the Dark Sky Web service.
+// Creating the data Model objects to hold the data we are getting from the Dark Sky Web service.
 // STEP 10: Add a java class to main project
 // This is a class file to define all setters and getter methods on each variable defined
 package com.sanamshikalgar.darksky;
-
-import android.icu.util.TimeZone;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -19,12 +17,35 @@ public class CurrentWeather {
     private String icon;
     private double temperature;
     private double humidity;
-    private long pressure;
+    private long ozone;
     private double windSpeed;
     private int uvIndex;
     private String timezone;
+    private double precipProbability;
 
-// STEP 11: Use Generate option to select getter and setter to get the list of getter and setter methods for each of the variables
+    // C1
+    public CurrentWeather() {
+    }
+
+    // C2
+    public CurrentWeather(String locationLabel, long time, String summary, String icon,
+                          double temperature, double humidity, long ozone,
+                          double windSpeed, int uvIndex, String timezone, double precipProbability) {
+        this.locationLabel = locationLabel;
+        this.time = time;
+        this.summary = summary;
+        this.icon = icon;
+        this.temperature = temperature;
+        this.humidity = humidity;
+        this.ozone = ozone;
+        this.windSpeed = windSpeed;
+        this.uvIndex = uvIndex;
+        this.timezone = timezone;
+        this.precipProbability = precipProbability;
+    }
+
+
+    // STEP 11: Use Generate option to select getter and setter to get the list of getter and setter methods for each of the variables
     public String getLocationLabel() {
         return locationLabel;
     }
@@ -121,12 +142,12 @@ public class CurrentWeather {
         this.humidity = humidity;
     }
 
-    public long getPressure() {
-        return pressure;
+    public long getOzone() {
+        return ozone;
     }
 
-    public void setPressure(long pressure) {
-        this.pressure = pressure;
+    public void setOzone(long ozone) {
+        this.ozone = ozone;
     }
 
     public double getWindSpeed() {
@@ -135,6 +156,14 @@ public class CurrentWeather {
 
     public void setWindSpeed(double windSpeed) {
         this.windSpeed = windSpeed;
+    }
+
+    public double getPrecipProbability() {
+        return precipProbability;
+    }
+
+    public void setPrecipProbability(double precipProbability) {
+        this.precipProbability = precipProbability;
     }
 
     public int getUvIndex() {

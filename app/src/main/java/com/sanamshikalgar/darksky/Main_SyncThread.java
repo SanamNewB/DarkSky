@@ -21,7 +21,7 @@ public class Main_SyncThread extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activitymain);
 // STEP 1: declare URL of the API you will use to display weather of a particular location
         String apiKey = "8a713dd71a4848c8f429c84202dde31b"; // unique access to the website's api service when user signs up.
 // hardcoded co-ordinates of Los Angeles, CA
