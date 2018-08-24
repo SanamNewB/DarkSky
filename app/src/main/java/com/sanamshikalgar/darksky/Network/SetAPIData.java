@@ -25,7 +25,6 @@ public class SetAPIData {
 
         currentWeather.setHumidity(currently.getDouble("humidity")); // setting values from the data model
         currentWeather.setTime(currently.getLong("time"));
-        //currentWeather.setLocationLabel(currently.getString("timezone"));
         currentWeather.setSummary(currently.getString("summary"));
         currentWeather.setIcon(currently.getString("icon"));
         currentWeather.setTemperature(currently.getDouble("temperature"));

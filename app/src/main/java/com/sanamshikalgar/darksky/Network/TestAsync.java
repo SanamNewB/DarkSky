@@ -25,10 +25,10 @@ public class TestAsync extends AsyncTask<Void,Void,CurrentWeather> {
     private Activity activity;
     String apiKey = "8a713dd71a4848c8f429c84202dde31b"; // unique access to the website's api service when user signs up.
     double latitude = 37.8267; // hardcoded co-ordinates of Los Angeles, CA
-    //double latitude = 99999; // used this for testing the Alert Dialog Pop-up
     double longitude = -122.4233;
     String forecastURL = "https://api.darksky.net/forecast/" // https://api.darksky.net/forecast/8a713dd71a4848c8f429c84202dde31b/37.8267,-122.4233
             + apiKey + "/" + latitude + "," + longitude;
+
     CurrentWeather currentWeather = new CurrentWeather();
 
     public TestAsync(Context context, Activity activity) {
@@ -83,10 +83,8 @@ public class TestAsync extends AsyncTask<Void,Void,CurrentWeather> {
                     currentWeather = new SetAPIData().getCurrentDetails(JSON_Data);
                 }
             } catch (IOException e) {
-
             }
             catch (JSONException j){
-
             }
 
 

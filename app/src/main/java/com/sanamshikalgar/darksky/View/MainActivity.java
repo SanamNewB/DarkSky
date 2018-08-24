@@ -5,16 +5,14 @@ package com.sanamshikalgar.darksky.View;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.view.MenuItemCompat;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -34,17 +32,28 @@ public class MainActivity extends AppCompatActivity {
     public static final String TAG = MainActivity.class.getSimpleName();
 // STEP 12: Using the CurrentWeather object
     private CurrentWeather currentWeather = new CurrentWeather(); // Set this only when network response is successful
+    private ImageView iconImage;
 
-    @BindViews({R.id.textView_temperature1,R.id.textViewHumidiValue1,
-            R.id.textViewRainID1,R.id.textViewWindSpeedValue1,
-            R.id.UVIndexValue1, R.id.OzoneValue1})
-    List<TextView> temperature = new ArrayList<>();
+    @BindViews(
+            {   R.id.textView_temperature1, //0
+                R.id.textViewHumidiValue1, //1
+                R.id.textViewRainID1,       //2
+                R.id.textViewWindSpeedValue1,   //3
+                R.id.UVIndexValue1, //4
+                R.id.OzoneValue1, //5
+                R.id.textViewCurrentTime1,  //6
+                R.id.summaryID1,   //7
+                R.id.imageView_iconID1 //8
+            }
+    )
+
+    List<TextView> onWeatherDisplay = new ArrayList<>();
     TestAsync testAsync = new TestAsync(this,this);
     @BindView(R.id.toolbarID1)
     Toolbar toolbar;
 
     //@BindView(R.id.textView_temperature)
-    //TextView temperature;
+    //TextView onWeatherDisplay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
 
         //TextView darkSky = findViewById(R.id.creditTextView);
         //darkSky.setMovementMethod(LinkMovementMethod.getInstance());
+
+        iconImage=findViewById(R.id.imageView_iconID1);
 
 // STEP 1: declare URL of the API you will use to display weather of a particular location
         String apiKey = "8a713dd71a4848c8f429c84202dde31b"; // unique access to the website's api service when user signs up.
@@ -107,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
 //                            // JSON Data == response.body().string()
 //                            currentWeather = getCurrentDetails(jSON_Data);
 //                            //String locationLabel, long time, String summary, String icon,
-//                            //                          double temperature, double humidity, long pressure,
+//                            //                          double onWeatherDisplay, double humidity, long pressure,
 //                            //                          double windSpeed, int uvIndex, String timezone
 //                            //setViews(currentWeather);
 ////                            CurrentWeather displayer = new CurrentWeather(
@@ -171,11 +182,18 @@ public class MainActivity extends AppCompatActivity {
 
         return true;
     }
-
+// Displaying the current JSON values
     public void setDisplay(CurrentWeather currentWeather1){
-            temperature.get(0).setText(String.valueOf(Math.round(((currentWeather1.getTemperature())-32)*5/9)));
-            temperature.get(1).setText(String.valueOf(currentWeather1.getHumidity()*100));
+            onWeatherDisplay.get(0).setText(String.valueOf(Math.round(((currentWeather1.getTemperature())-32)*5/9)));
+            onWeatherDisplay.get(1).setText(String.valueOf(currentWeather1.getHumidity() * 100));
+            onWeatherDisplay.get(2).setText(String.valueOf(currentWeather1.getPrecipProbability() * 100));
+            onWeatherDisplay.get(3).setText(String.valueOf(Math.round(currentWeather1.getWindSpeed() * 1.60934)));
+            onWeatherDisplay.get(4).setText(String.valueOf(currentWeather1.getUvIndex()));
+            onWeatherDisplay.get(5).setText(String.valueOf(currentWeather1.getOzone()));
+            onWeatherDisplay.get(6).setText(String.valueOf("As of " + currentWeather1.getFormattedTime() + " it is"));
+            onWeatherDisplay.get(7).setText(String.valueOf("Currently the weather is " + currentWeather1.getSummary().toLowerCase()));
         }
+
 
 // STEP 8: When you want to create a method, hover over the method you created, and alt+enter, select create method.
 // Android Studio automatically creates that method with appropriate access modifier and return type.
@@ -245,7 +263,7 @@ public class MainActivity extends AppCompatActivity {
 //        //currentWeather.setLocationLabel(currently.getString("timezone"));
 //        currentWeather.setSummary(currently.getString("summary"));
 //        currentWeather.setIcon(currently.getString("icon"));
-//        currentWeather.setTemperature(currently.getDouble("temperature"));
+//        currentWeather.setTemperature(currently.getDouble("onWeatherDisplay"));
 //        currentWeather.setOzone(currently.getLong("ozone")); //The columnar density of total atmospheric ozone at the given time in Dobson units.
 //        currentWeather.setUvIndex(currently.getInt("uvIndex"));
 //        currentWeather.setWindSpeed(currently.getDouble("windSpeed"));

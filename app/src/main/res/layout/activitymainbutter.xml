@@ -153,7 +153,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:paddingTop="15dp"
-            android:text="WIND mph"
+            android:text="WIND kmph"
             android:textAlignment="center"
             android:textColor="@color/CurrentTimeColor"
             android:textStyle="bold"

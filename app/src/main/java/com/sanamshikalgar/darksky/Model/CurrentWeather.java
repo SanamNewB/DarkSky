@@ -48,13 +48,6 @@ public class CurrentWeather {
 
 
     // STEP 11: Use Generate option to select getter and setter to get the list of getter and setter methods for each of the variables
-    public String getLocationLabel() {
-        return locationLabel;
-    }
-
-    public void setLocationLabel(String locationLabel) {
-        this.locationLabel = locationLabel;
-    }
 
     public long getTime() {
         return time;
